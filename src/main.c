@@ -146,26 +146,9 @@ struct {
     GtkWidget *widget;
 
 } static menuitems[] = {
-        {"Set FAN to AUTO", G_CALLBACK(ui_command_set_fan), -1,  AUTO,   NULL},
+	{"AUTO", G_CALLBACK(ui_command_set_fan), -1,  AUTO,   NULL},
         {"",                NULL,                           0L,  NA,     NULL},
-        {"Set FAN to  0%",  G_CALLBACK(ui_command_set_fan), 0,   MANUAL, NULL},
-        {"Set FAN to  10%", G_CALLBACK(ui_command_set_fan), 10,  MANUAL, NULL},
-        {"Set FAN to  15%", G_CALLBACK(ui_command_set_fan), 15,  MANUAL, NULL},
-        {"Set FAN to  16%", G_CALLBACK(ui_command_set_fan), 16,  MANUAL, NULL},
-        {"Set FAN to  17%", G_CALLBACK(ui_command_set_fan), 17,  MANUAL, NULL},
-        {"Set FAN to  18%", G_CALLBACK(ui_command_set_fan), 18,  MANUAL, NULL},
-        {"Set FAN to  19%", G_CALLBACK(ui_command_set_fan), 19,  MANUAL, NULL},
-        {"Set FAN to  20%", G_CALLBACK(ui_command_set_fan), 20,  MANUAL, NULL},
-        {"Set FAN to  30%", G_CALLBACK(ui_command_set_fan), 30,  MANUAL, NULL},
-        {"Set FAN to  40%", G_CALLBACK(ui_command_set_fan), 40,  MANUAL, NULL},
-        {"Set FAN to  50%", G_CALLBACK(ui_command_set_fan), 50,  MANUAL, NULL},
-        {"Set FAN to  60%", G_CALLBACK(ui_command_set_fan), 60,  MANUAL, NULL},
-        {"Set FAN to  70%", G_CALLBACK(ui_command_set_fan), 70,  MANUAL, NULL},
-        {"Set FAN to  80%", G_CALLBACK(ui_command_set_fan), 80,  MANUAL, NULL},
-        {"Set FAN to  90%", G_CALLBACK(ui_command_set_fan), 90,  MANUAL, NULL},
-        {"Set FAN to 100%", G_CALLBACK(ui_command_set_fan), 100, MANUAL, NULL},
-        {"",                NULL,                           0L,  NA,     NULL},
-        {"Quit",            G_CALLBACK(ui_command_quit),    0L,  NA,     NULL}
+	{"Quit",            G_CALLBACK(ui_command_quit),    0L,  NA,     NULL}
 };
 
 static int menuitem_count = (sizeof(menuitems) / sizeof(menuitems[0]));
@@ -401,7 +384,7 @@ static void main_ui_worker(int argc, char **argv) {
     app_indicator_set_label(indicator, "Init..", "XX");
     app_indicator_set_status(indicator, APP_INDICATOR_STATUS_ACTIVE);
     app_indicator_set_ordering_index(indicator, -2);
-    app_indicator_set_title(indicator, "Clevo Fan Control");
+    app_indicator_set_title(indicator, "Fan");
     app_indicator_set_menu(indicator, GTK_MENU(indicator_menu));
     g_timeout_add(500, &ui_update, NULL);
     ui_toggle_menuitems(share_info->auto_duty ? -1 : share_info->fan_duty);
@@ -443,12 +426,11 @@ static gboolean ui_update(gpointer user_data) {
     char icon_name[256];
     double load = ((double) share_info->fan_rpms) / MAX_FAN_RPM * 100.0;
     double load_r = round(load / 5.0) * 5.0;
-    sprintf(label, "Clevo Fan Control\n%d℃ %d℃\n%i RPM", share_info->cpu_temp,
-            share_info->gpu_temp, share_info->fan_rpms);
+    sprintf(label, "");
     app_indicator_set_label(indicator, label, "XXXXXX");
     app_indicator_set_title(indicator, label);
     sprintf(icon_name, "brasero-disc-%02d", (int) load_r);
-//    app_indicator_set_icon(indicator, icon_name);
+    app_indicator_set_icon(indicator, "");
 
     return G_SOURCE_CONTINUE;
 }
@@ -518,7 +500,7 @@ static int ec_auto_duty_adjust(void) {
     share_info->last_update_time_ms = now;
 
     // "Silent" profile
-    int max_fan_duty = 40;
+    int max_fan_duty = 60;
     int min_temp_for_duty_increase = 60;
     int max_temp = 105;
     int max_fan_duty_step = 1;
