@@ -1,12 +1,11 @@
 /*
  ============================================================================
  Name        : clevo-indicator.c
- Author      : AqD <iiiaqd@gmail.com>
+ Author      : Comexr B.V.
  Version     :
- Description : Ubuntu fan control indicator for Clevo laptops
+ Description : Ubuntu fan control indicator for Clevo L14x
 
- Based on http://www.association-apml.fr/upload/fanctrl.c by Jonas Diemer
- (diemer@gmx.de)
+ Based on https://github.com/agramian/clevo-fan-control by Abtin Gramian
 
  ============================================================================
 
