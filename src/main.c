@@ -146,7 +146,7 @@ struct {
     GtkWidget *widget;
 
 } static menuitems[] = {
-	{"AUTO", G_CALLBACK(ui_command_set_fan), -1,  AUTO,   NULL},
+	{"Auto Fan", G_CALLBACK(ui_command_set_fan), -1,  AUTO,   NULL},
         {"",                NULL,                           0L,  NA,     NULL},
 	{"Quit",            G_CALLBACK(ui_command_quit),    0L,  NA,     NULL}
 };
