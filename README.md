@@ -1,4 +1,5 @@
 # Clevo Fan Control on Linux
+Tested on and created for some laptops of the laptop Laptopwithlinux.com sells.
 
 ## Ubuntu installation
 
@@ -63,3 +64,9 @@ files.
 ```shell
 sudo xargs rm < install_manifest.txt
 ```
+
+### Disclaimer
+Use at your own risk! We are not responsible for any damage this software may cause to your computer. We cannot and will not provide any warranty on this!
+Tested on and created for some laptops of the laptop Laptopwithlinux.com sells.
+Changes in configuration and/or wrongful use may result in overheating and permanent damage of hardware.
+
