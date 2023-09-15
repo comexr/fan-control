@@ -1,5 +1,6 @@
 # Clevo Fan Control on Linux
 Tested on and created for some laptops of the laptop Laptopwithlinux.com sells.
+The default profile is specifically adjusted for the L141AU.
 
 ## Ubuntu installation
 
