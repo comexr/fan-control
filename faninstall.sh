@@ -8,4 +8,3 @@ cd fan
 cmake -DUSER=$(whoami) -DGROUP=$(whoami) -DHOME=/home/$(whoami) ~/fan-control
 cmake --build .
 sudo cmake --install .
-reboot
